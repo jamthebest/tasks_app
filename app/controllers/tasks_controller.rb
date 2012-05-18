@@ -3,9 +3,14 @@ class TasksController < ApplicationController
   end
 
   def create
+  	@task = Task.new(params[:task])
+  	if @task.save
+  		redirect_to @task		#tambien se pede index o @task /task/#deIDdelTask
+  	end
   end
 
   def new
+  	@task = Task.new
   end
 
   def update
@@ -15,6 +20,7 @@ class TasksController < ApplicationController
   end
 
   def show
+  	@task = Task.find(params[:id])
   end
 
   def destroy
