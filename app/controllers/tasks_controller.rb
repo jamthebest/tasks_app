@@ -7,6 +7,8 @@ class TasksController < ApplicationController
   	@task = Task.new(params[:task])
   	if @task.save
   		redirect_to @task		#tambien se pede index o @task /task/#deIDdelTask
+  	else
+			render :new
   	end
   end
 
@@ -16,8 +18,11 @@ class TasksController < ApplicationController
 
   def update
 	  @task = Task.find(params[:id])
-		@task.update_attributes(params[:task])
-		redirect_to @task		#tambien se pede index o @task /task/#deIDdelTask
+		if @task.update_attributes(params[:task])
+			redirect_to @task		#tambien se pede index o @task /task/#deIDdelTask
+		else
+			render :edit
+		end
   end
 
   def edit
