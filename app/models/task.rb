@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-	belongs_to :user
 	
   attr_accessible :description, :priority
 
@@ -9,6 +8,8 @@ class Task < ActiveRecord::Base
 
   before_validation :clean_description, if: "description.present?"
 
+	belongs_to :user
+	
   private
   def clean_description
     self.description = self.description.strip.capitalize
