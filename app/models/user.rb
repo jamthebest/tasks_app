@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :tasks
+	
   attr_accessible :email, :username, :password, :password_confirmation
   has_secure_password
   

@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+	belongs_to :user
+	
   attr_accessible :description, :priority
 
   validates_presence_of :description
